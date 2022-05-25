@@ -15,6 +15,7 @@
     this is 
     multiple line comment  */
         echo("Hello world");
+        $a=(int ) readline("Enter intiger");
         //Data types inside php 10 primitive types
         //scalar types String intiger float boolean
         

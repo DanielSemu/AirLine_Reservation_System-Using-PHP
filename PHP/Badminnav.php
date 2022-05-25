@@ -19,10 +19,10 @@
     </head>
     <body>
         <div class="topnav">
-            <a class="active" href="BAdminhomepage.php">HomePage</a>
-            <a href="#">Flight_info</a>
-            <a href="#">Add Flight</a>
+            <a class="" href="BAdminhomepage.php">HomePage</a>
+            <a href="Badmin_flight_view.php">Flight_info</a>
+            <a href="BAdmin_add_flight.php">Add Flight</a>
             <a href="#">Book Ticket Report</a>
-            <a  style="float: right"href="#">logout</a>
+            <a  style="float: right"href="BHomePage.php">logout</a>
         </div>
 </body>

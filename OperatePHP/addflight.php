@@ -31,8 +31,11 @@ $sql = "insert into flight_info (Flight_no, Flight_name, Source,Destination,Airp
 VALUES ('$flightno','$flightname','$source_city','$destination_city','$airline','$date','$time','$price','$seats','$comment')";
 
 if ($conn->query($sql) === TRUE) {
-    include '../PHP/BAdmin_add_flight.php';
-    echo ("<script>alert('New record created successfully');</script>");
+   
+    
+     header("Location:../PHP/Badmin_flight_view.php",TRUE,301);
+     echo ("<script>alert('New record created successfully');</script>");
+     exit();
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }

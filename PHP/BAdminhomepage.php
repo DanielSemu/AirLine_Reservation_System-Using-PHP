@@ -31,7 +31,7 @@
            <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a href="#flight-info" class="nav-link">Flight_info</a>
+                        <a href="Badmin_flight_view.php" class="nav-link">Flight_info</a>
                     </li>
                     <li class="nav-item">
                         <a href="BAdmin_add_flight.php" class="nav-link">Add Flight</a>

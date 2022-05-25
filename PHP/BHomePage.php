@@ -21,6 +21,9 @@
 </head>
 <body>
 <?php include 'Bnavbar.php';?>
+<center>
+    <h1 style="margin-top: 50px; bol"><span style="color: red">WELCOME</span> TO ETHIOPIAN AIRLINES</h1>
+</center>
     <script src="../js/bootstrap.js"></script>
 </body>
 </html>

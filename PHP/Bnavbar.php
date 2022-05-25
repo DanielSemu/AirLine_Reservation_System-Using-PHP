@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a href="#flight-info" class="nav-link">Flight Info</a>
+                        <a href="Bflight_view_before_login.php" class="nav-link">Flight Info</a>
                     </li>
                     <li class="nav-item">
                         <a href="#about-us" class="nav-link">About Us</a>

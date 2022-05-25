@@ -22,7 +22,7 @@ if($emaila_ddress=='admin@gmial.com' && $password=='123123' ){
 $sql1="select *from  buser where Email='$emaila_ddress' and Password='$password'";
 $result1=$conn->query($sql1);
 if ($result1->num_rows >0){
-    header("Location:../PHP/BHomePage.php",TRUE,301);
+    header("Location:../PHP/BUserHomePage.php",TRUE,301);
      exit();
 }
  else {

@@ -1,4 +1,3 @@
-
 <?php
 $user = 'root';
 $password = '';
@@ -6,7 +5,9 @@ $database = 'airline_reservation_system';
 $servername = 'localhost';
 $mysqli = new mysqli($servername, $user, $password, $database);
 if ($mysqli->connect_error) {
-    die('Connect Error (' .$mysqli->connect_errno . ') ' .$mysqli->connect_error);
+    die('Connect Error (' .
+            $mysqli->connect_errno . ') ' .
+            $mysqli->connect_error);
 }
 // SQL query to select data from database
 $sql = "SELECT * FROM flight_info";
@@ -14,12 +15,12 @@ $result = $mysqli->query($sql);
 $mysqli->close();
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
+<html>
+    <head>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Flight View</title>
+        <title>Available Flight</title>
         <link rel="stylesheet" href="../css//bootstrap.css">
         <link rel="stylesheet" href="../CSS_Local/navbar.css">
         <style>
@@ -33,10 +34,10 @@ $mysqli->close();
             }
 
         </style>
-</head>
-<body>
-<?php include 'Badminnav.php';?>
- <script src="../js/bootstrap.js"></script>
+    </head>
+    <body>
+        <?php include './BUserHomePage.php'; ?>
+        <script src="../js/bootstrap.js"></script>
     <center>
         <div class="form-group">
             <div  class="col-sm-4"></div>
@@ -77,10 +78,7 @@ $mysqli->close();
                     <td><?php echo $rows['Time']; ?></td>
                     <td><?php echo $rows['Price']; ?></td>
                     <td><?php echo $rows['Seat']; ?></td>
-                    
-                    <td><a class="btn btn-success" href="BAdmin_edit_flight.php?deleteid=<?php echo $rows['Flight_no'];?>" >Edit</a></td>
-                    <td><a class="btn btn-danger " href="BAdmin_delete_flight.php?deleteid=<?php echo $rows['Flight_no'];?>"role="button"onclick="return confirm('Are you sure you want to delete?')" >Delete</a></td>
-                  
+                    <td><a class="btn btn-success" href="BUser_to_book_ticket.php?deleteid=<?php echo $rows['Flight_no'];?>" >Book_Ticket</a></td>
                 </tr>
                 <?php
             }
@@ -88,6 +86,5 @@ $mysqli->close();
 
         </tbody>
     </table>
-    
 </body>
 </html>

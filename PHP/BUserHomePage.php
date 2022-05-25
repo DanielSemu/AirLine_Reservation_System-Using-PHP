@@ -22,14 +22,14 @@
     <body>
         <nav class="navbar navbar-expand-md  bg-dark navbar-dark">
         <div class="container">
-            <a href="#" class="navbar-brand " >Airline Reservation</a>
+            <a href="BUserHomePage.php" class="navbar-brand " >Airline Reservation</a>
            <buttun class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                <span class="navbar-toggler-icon"></span>
            </buttun>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a href="#flight-info" class="nav-link">Flight Details</a>
+                        <a href="BUserFlight_view_after_login.php" class="nav-link">Flight Details</a>
                     </li>
                     <li class="nav-item">
                         <a href="#about-us" class="nav-link">Hi, User</a>
