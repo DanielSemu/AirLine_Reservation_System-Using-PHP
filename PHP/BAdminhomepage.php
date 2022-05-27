@@ -37,7 +37,7 @@
                         <a href="BAdmin_add_flight.php" class="nav-link">Add Flight</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Manage Users</a>
+                        <a href="Bflight_report.php" class="nav-link">Book Ticket Report</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

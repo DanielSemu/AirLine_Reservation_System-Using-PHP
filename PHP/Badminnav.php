@@ -22,7 +22,7 @@
             <a class="" href="BAdminhomepage.php">HomePage</a>
             <a href="Badmin_flight_view.php">Flight_info</a>
             <a href="BAdmin_add_flight.php">Add Flight</a>
-            <a href="#">Book Ticket Report</a>
+            <a href="Bflight_report.php">Book Ticket Report</a>
             <a  style="float: right"href="BHomePage.php">logout</a>
         </div>
 </body>

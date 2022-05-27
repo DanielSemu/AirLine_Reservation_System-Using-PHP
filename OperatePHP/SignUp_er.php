@@ -30,8 +30,8 @@ $sql = "insert into buser (Full_Name, Email, PassportId,Password,userType)
 VALUES ('$fullname','$email','$PassprtId','$password','user')";
 
 if ($conn->query($sql) === TRUE) {
-    include '../PHP/BSignUp.php';
-    echo "\t\t\t\t\t\tNew record created successfully";
+    include '../PHP/BSignUp.php';//<h2>The Person is already Registered</h2>
+    echo ("<script>alert('New record created successfully');</script>");
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }

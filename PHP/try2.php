@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
 
-    </head>
-    <body>
-        <form name='myForm' action="" method="POST">
-            <input type='hidden' name='name' value='' readonly="">
-            <button type="submit" onclick="func()" name="btn">Submit</button>
-        </form>
-      
-<script type="text/javascript"> 
-    var name='';
-   function func(){
-     var name=prompt("enter name");
-    document.forms['myForm']['name'].value = name;
-   }
-   document.forms['myForm']['name'].value = name;
-</script>
-    </body>
-</html>
 <?php
-if (isset($_POST["btn"])){
-    
-$age=$_POST['name'];
-echo $age."conc";
+$num1=10;
+  function prompt($prompt_msg) {
+        echo("<script> var answer = prompt('" . $prompt_msg . "'); </script>");
+
+        $answer = "<script>document.write(answer); </script>";
+        return($answer);
+    }
+ //program
+$prompt_msg = "Please Enter number";
+$num2 = prompt($prompt_msg);
+echo $num2;
+echo '   ';
+if($num1>$num2){
+    echo 'number 1 win';
+}
+ else {
+    echo 'number 2 win';
 }
 ?>
