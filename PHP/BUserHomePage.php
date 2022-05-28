@@ -32,7 +32,10 @@
                         <a href="BUserFlight_view_after_login.php" class="nav-link">Flight Details</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#about-us" class="nav-link">Hi, User</a>
+                        <a href="BDownload_Ticket.php" class="nav-link">Get Ticket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Hi, User</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

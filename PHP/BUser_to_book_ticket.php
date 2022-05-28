@@ -118,7 +118,7 @@ if (isset($_GET['deleteid'])) {
                             <label for="destiny" class="col-sm-3 control-label">Available Seat</label>
                             <div class="col-sm-8">
 
-                                <input type="number" class="form-control" value="<?php echo $seats; ?>" name="seat" required minlength="1" title="add number of seats" readonly>
+                                <input type="number" class="form-control" value="<?php echo $seats; ?>" id="seat" name="seat" required minlength="1" title="add number of seats" readonly>
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@ if (isset($_GET['deleteid'])) {
                             <label for="destiny" class="col-sm-3 control-label">Number of Seats:</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control" name="seats">
+                                <select class="form-control"id="seats" name="seats">
                                     <!--                    (please select:)-->
                                     <option value="1" selected>1 </option>
                                     <option value="2">2 </option>
@@ -143,7 +143,7 @@ if (isset($_GET['deleteid'])) {
                             <label for="destiny" class="col-sm-3 control-label">Class:</label>
                             <div class="col-sm-8">
 
-                                <select class="form-control" name="classs">
+                                <select class="form-control" id="classs" name="classs">
                                     <!--                    (please select:)-->
                                     <option value="Regular" selected>Regular Class</option>
                                     <option value="first">First Class</option>
@@ -156,31 +156,92 @@ if (isset($_GET['deleteid'])) {
 
 
                     </div>
+                    <div class="form-group" style="display: flex;">
+                        <label for="destiny" class="col-sm-3 control-label">Passport ID:</label>
+                        <div class="col-sm-8">
+
+                            <input type="text" name="passport" class="form-control" required minlength="3" title="Please enter your passport ID " >
+                        </div>
+                    </div>
                     <div class="form-group" >
                         <div class="col-sm-offset-3 col-sm-8">
-                            <input type='hidden' name='name' value='' readonly="">
-                            <button class="btn-success" type="submit" onclick="func()" id="book"   name="book" value="addflight">Book Ticket</button>
-                            <!--                            <button class="btn-danger" type="reset"  name="add" value="addflight">Cancel</button>-->
+                            <input type='hidden' id="payed"  name='payed'  readonly="">
+                            <input type='hidden' id="total" name='total' readonly="">
+                            <button class="btn-success" type="submit" onclick="calculate()" id="book"   name="book" value="addflight">Book Ticket</button>
+
+                            <!--                            <button class="btn-danger"  <button>Calculate</button> type="reset"  name="add" value="addflight">Cancel</button>-->
                         </div>
                     </div>
 
                 </div>
             </center>
         </form>
-
-        <!--         <form name='myForm' action="" method="POST">
-                    <input type='hidden' name='hdd' value='' readonly="">
-                    <button type="submit" onclick="func()" name="btn">Submit</button>
-                </form>
-                 // Setup text field -->
         <script type="text/javascript">
             var name = '';
-            function func() {
-                var name = prompt("Enter Your Passport ID");
-                document.forms['myForm']['name'].value = name;
-            }
+            function calculate() {
+                let Aseat = document.myForm.seat.value;
+                //var Aseat = parseFloat((document.getElementById("seat").value));
+                parseFloat(Aseat);
+                let Rseat = document.myForm.seats.value;
+                parseFloat(Rseat);
+                //var Rseat = parseFloat((document.getElementById("seats").value));
+                let price = document.myForm.price.value;
+                parseFloat(price);
+                //var price = parseFloat((document.getElementById("price").value));
+                let Bclass = document.myForm.classs.value;
+                //var Bclass = parseFloat((document.getElementById("classs").value));
+                 function getSum(a, b){
+                        while (b != 0) {
+                            var carry = a & b;  //calculate if is there any carry we need to add
+                            a = a ^ b;   // a is used to hold the sum
+                            b = carry << 1;  //b is used to hold left shift carry
+                        }
+                        return a;
+                        }
+                var total = 1.0;
+                if ((Aseat - Rseat) > 0) {
+                    if (Bclass == "Regular") {
+                        total = price * Rseat;
+                        //price++=Rseat;
+                    } else if (Bclass == "first") {
+                        //5% above  
+                     
+                        var percent=price * 0.05;
+                        var prt=getSum(price,percent);
+                        total=prt * Rseat;
+                        
+                    } else if (Bclass == "second") {
+                        //10% above
+                        var percent=price * 0.1;
+                        var prt=getSum(price,percent);
+                        total=prt * Rseat;
+                    } else if (Bclass == "economic") {
+                        //15% above
+                        var percent=price * 0.15;
+                        var prt=getSum(price,percent);
+                        total=prt * Rseat;
+                    } else {
+                        //20 above
+                       var percent=price * 0.2;
+                        var prt=getSum(price,percent);
+                        total=prt * Rseat;
+                    }
+                } else {
+                    total = 0;
+                }
 
+                document.forms['myForm']['total'].value = total;
+                func();
+            }
+            var name = '';
+            function func() {
+
+                var total = document.myForm.total.value;
+                var name = prompt("Enter money " + total + " Birr");
+                document.forms['myForm']['payed'].value = name;
+            }
         </script>
+
     </body>
 </html>
 <?php
@@ -198,18 +259,6 @@ if (isset($_POST['book'])) {
     $Aseats = (float) $_POST['seat'];
     $Rseat = (float) $_POST['seats'];
     $class = $_POST['classs'];
-//    $passport = $_POST['hdd'];
-//    function prompt($prompt_msg) {
-//        echo("<script> var answer = prompt('" . $prompt_msg . "'); </script>");
-//
-//        $answer = "<script>document.write(answer); </script>";
-//        return($answer);
-//    }
-//
-//    //program
-//    $prompt_msg = "Please type your Passport ID.";
-//    $passp = prompt($prompt_msg);
-//   
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -223,62 +272,31 @@ if (isset($_POST['book'])) {
     }
 
 
-    $age = $_POST['name'];
+    $pasp = $_POST['passport'];
 
-   
-
-    $sql1 = "select * from buser where PassportID='$age'";
+    $sql1 = "select * from buser where PassportID='$pasp'";
     $result1 = $conn->query($sql1);
     if ($result1->num_rows > 0) {
         // output data of each row
         if (($Aseats - $Rseat) > 0) {
-            $total = 1.0;
-            if ($class == "Regular") {
-                $total = $Rseat * $price;
-            } else if ($class == "first") {
-                //5% above
-                $price = $price + ((5 * $price) / 100);
-                $total = $Rseat * $price;
-            } else if ($class == "second") {
-                //10% above
-                $price = $price + ((10 * $price) / 100);
-                $total = $Rseat * $price;
-            } else if ($class == "economic") {
-                //15% above
-                $price = $price + ((15 * $price) / 100);
-                $total = $Rseat * $price;
-            } else {
-                //20 above
-                $price = $price + ((20 * $price) / 100);
-                $total = $Rseat * $price;
-            }
-
-            function prompt($prompt_msg) {
-                echo("<script> var answer = prompt('" . $prompt_msg . "'); </script>");
-
-                $answer = "<script>document.write(answer); </script>";
-                return($answer);
-            }
-
-            //program
-            $prompt_msg = "Please Pay " . $total . " Birr";
-            $Payment1 = prompt($prompt_msg);
-
             //update flight enfo
-            $newAseat = $Aseats - $Rseat;
+            $Payment = $_POST['payed'];
+            $total = $_POST['total'];
 
+            $newAseat = $Aseats - $Rseat;
             //echo 'payed before com' . $Payment1;
-            if (900 >= $total) {
-                $sql2 = "select * from flight_report where PassportID='$age' and Flight_no='$flightno'";
+            if ($Payment >= $total) {
+                $sql2 = "select * from flight_report where PassportID='$pasp' and Flight_no='$flightno'";
                 $result2 = $conn->query($sql2);
                 if ($result2->num_rows > 0) {
                     echo ("<script>alert('You Have Already Has This Tickect  Download It');</script>");
                 } else {
                     //(PassportID,Flight_no,Source,Destination,Date,Time,Reserved_seat,Reserved_class,Payed_Amount,Change)
-                    $sql3 = "insert into flight_report VALUES ('$age','$flightno','$source_city','$destination_city','$date','$time','$Rseat','$class','$total','mels')";
+                    $change = $Payment - $total;
+                    $sql3 = "insert into flight_report VALUES ('$pasp','$flightno','$source_city','$destination_city','$date','$time','$Rseat','$class','$Payment','$change')";
                     if ($conn->query($sql3) === TRUE) {
-                         $sql4 = "update  flight_info set Seat='$newAseat' where Flight_no='$flightno'";
-                         $conn->query($sql4);
+                        $sql4 = "update  flight_info set Seat='$newAseat' where Flight_no='$flightno'";
+                        $conn->query($sql4);
                         //<h2>The Person is already Registered</h2> echo '<center><h2>Booked Succesfully </h2></center>';
                         echo ("<script>alert('You Booked Ticket Successfully You can Download It');</script>");
                     } else {
@@ -287,13 +305,11 @@ if (isset($_POST['book'])) {
                 }
 
                 //echo $total; 
-               
             } else {
                 echo ("<script>alert('You Entered Less Amount');</script>");
-    
             }
         } else {
-             echo ("<script>alert('There is no Available space please Wait Another Flight ');</script>");
+            echo ("<script>alert('There is no Available space please Wait Another Flight ');</script>");
 
             echo '<center><h2></h2></center>';
             exit();
@@ -301,7 +317,7 @@ if (isset($_POST['book'])) {
     } else {
 
 //    header("Location: BUserFlight_view_after_login.php");
-      echo ("<script>alert('You Entered Wrong Passport Id');</script>");  
+        echo ("<script>alert('You Entered Wrong Passport Id');</script>");
     }
 
 
