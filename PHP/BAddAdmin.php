@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp Page</title>
+    <title>Register Admin</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../CSS_Local/registeruser.css">
     
   
 </head>
 <body>
-<?php include 'Bnavbar.php';?>
+<?php include './BAdminhomepage.php';?>
 
     <div class="box">
-        <h2>Register User</h2>
+        <h2>Register Admin</h2>
         <form action="" name="myform"  method="POST" >
             <div class="inputBox" >
 <!--                //pattern="[a-zA-Z]{3,}-->
@@ -90,7 +90,7 @@ if ($result1->num_rows >0){
 }
  else {
 $sql = "insert into buser (Full_Name, Email, PassportId,Password,userType)
-VALUES ('$fullname','$email','$PassprtId','$password','user')";
+VALUES ('$fullname','$email','$PassprtId','$password','admin')";
 
 if ($conn->query($sql) === TRUE) {
     //<h2>The Person is already Registered</h2>

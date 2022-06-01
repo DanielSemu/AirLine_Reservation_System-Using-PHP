@@ -33,7 +33,7 @@ background-size: cover;
 </style>
 </head>
 <body>
-<?php include 'Badminnav.php';?>
+<?php include './BAdminhomepage.php';?>
     <center>
         <div class="form-group">
             <div  class="col-sm-4"></div>

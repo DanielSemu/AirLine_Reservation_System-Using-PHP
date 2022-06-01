@@ -35,7 +35,7 @@ $mysqli->close();
         </style>
 </head>
 <body>
-<?php include 'Badminnav.php';?>
+<?php include './BAdminhomepage.php';?>
  <script src="../js/bootstrap.js"></script>
     <center>
         <div class="form-group">

@@ -199,7 +199,7 @@ if (isset($_GET['deleteid'])) {
                         return a;
                         }
                 var total = 1.0;
-                if ((Aseat - Rseat) > 0) {
+                if ((Aseat - Rseat) >= 0) {
                     if (Bclass == "Regular") {
                         total = price * Rseat;
                         //price++=Rseat;
@@ -278,7 +278,7 @@ if (isset($_POST['book'])) {
     $result1 = $conn->query($sql1);
     if ($result1->num_rows > 0) {
         // output data of each row
-        if (($Aseats - $Rseat) > 0) {
+        if (($Aseats - $Rseat) >= 0) {
             //update flight enfo
             $Payment = $_POST['payed'];
             $total = $_POST['total'];
@@ -311,7 +311,7 @@ if (isset($_POST['book'])) {
         } else {
             echo ("<script>alert('There is no Available space please Wait Another Flight ');</script>");
 
-            echo '<center><h2></h2></center>';
+            
             exit();
         }
     } else {

@@ -165,7 +165,7 @@ if (isset($_POST['update'])) {
  $sql1 = "update  flight_info set Flight_no='$flightno',Flight_name='$flightname',Source='$source_city',Destination='$destination_city',Airport='$airline',Date='$date',Time='$time',Price='$price',Seat='$seats',Comment='$comment' where Flight_no='$id'";
 
 if ($mysqli->query($sql1) === TRUE) { 
-    echo ("<script>alert('The Record is Updated Succesfully successfully');</script>");
+    echo ("<script>alert('The Record is Updated Succesfully ');</script>");
     
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;

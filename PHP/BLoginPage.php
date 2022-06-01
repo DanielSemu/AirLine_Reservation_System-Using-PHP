@@ -36,7 +36,7 @@
 </html>
 
 <?php
-
+session_start();
 if(isset($_POST['login'])){
 $sn = "localhost";
 $un = "root";
@@ -50,22 +50,31 @@ $conn =new  mysqli($sn, $un, $pas,$db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-if($emaila_ddress=='admin@gmial.com' && $password=='123123' ){
-     header("Location:BAdminhomepage.php",TRUE,301);
-     
-}
- else {
+
+
 $sql1="select *from  buser where Email='$emaila_ddress' and Password='$password'";
 $result1=$conn->query($sql1);
 if ($result1->num_rows >0){
+    
+   while( $rows = $result1->fetch_assoc()){
+       $user=$rows['userType'];
+       
+   }
+//    $_SESSION['passport']=$passport;
+    $_SESSION['email']=$emaila_ddress;
+    if($user == "user"){
     header("Location:BUserHomePage.php",TRUE,301);
      exit();
+    }
+ else {
+        header("Location:BAdminhomepage.php",TRUE,301); 
+    }
 }
  else {
      
     echo ("<script>alert('Username or Password is incorrect');</script>");
 }
-}
+
 
 }
 
